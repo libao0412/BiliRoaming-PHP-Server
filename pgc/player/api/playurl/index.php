@@ -11,7 +11,9 @@ if ($headerStringValue==""){
 // 转发到b站服务器
 $url = "https://api.bilibili.com/pgc/player/api/playurl?".$_SERVER['QUERY_STRING'];
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_URL,$url);
+curl_setopt($ch,CURLOPT_FOLLOWLOCATION,false); 
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 $output = curl_exec($ch);
 curl_close($ch);
 print($output);
